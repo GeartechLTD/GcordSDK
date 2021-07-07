@@ -36,12 +36,6 @@ tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
 }
 
-// 打包源码
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
-
 task sourcesJar(type: Jar) {
     from sourceSets.main.allJava
     archiveClassifier.set("sources")
@@ -62,7 +56,6 @@ publishing {
         }
     }
 }
-
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
