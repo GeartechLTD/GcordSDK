@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@mipmap/call_bg"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_incall_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:src="@drawable/btn_incall_back"
+            android:visibility="invisible"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="167dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="88px"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/container_text"
+                    android:layout_width="88px"
+                    android:layout_height="88px"
+                    android:layout_gravity="center"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/text_head"
+                        android:layout_width="88dp"
+                        android:layout_height="88dp"
+                        android:ellipsize="none"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:singleLine="true"
+                        android:textColor="#FFFFFF"
+                        android:textSize="54sp"/>
+
+                    <ImageView
+                        android:id="@+id/image_head"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"/>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/text_contact_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="16dp"
+                    android:textColor="@color/sdk_std_white"
+                    android:textSize="64sp"/>
+
+                <TextView
+                    android:id="@+id/text_keyboard"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textColor="@color/sdk_std_white"
+                    android:textSize="64sp"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/text_position"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:padding="8dp"
+                android:textColor="@color/sdk_std_white"
+                android:textSize="22sp"/>
+
+            <TextView
+                android:id="@+id/text_call_timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:includeFontPadding="false"
+                android:singleLine="true"
+                android:text="00:00"
+                android:textColor="@color/sdk_std_white"
+                android:textSize="22sp"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/incall_dialpad_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="166dp"
+            android:orientation="vertical"
+            android:visibility="invisible">
+
+            <cn.com.geartech.gcordsdk.ui.views.InCallDialpad
+                android:id="@+id/incall_dial_pad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <cn.com.geartech.gcordsdk.ui.views.FlashButton
+                android:id="@+id/btn_flash"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@drawable/shape_bottom_round_white"
+                android:drawableStart="@mipmap/icon_flash"
+                android:gravity="center"
+                android:paddingEnd="290dp"
+                android:paddingStart="300dp"
+                android:text="@string/flash"
+                android:textColor="@color/sdk_std_blue"
+                android:textSize="22dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/incall_btn_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/btn_keyboard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:drawablePadding="8dp"
+                android:drawableTop="@drawable/btn_incall_keyboard_d"
+                android:gravity="center"
+                android:text="@string/keyboard"
+                android:textColor="@color/sdk_std_white"
+                android:textSize="22dp"/>
+
+            <cn.com.geartech.gcordsdk.ui.views.HandsFreeButton
+                android:id="@+id/btn_handsfree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="64dp"
+                android:drawablePadding="8dp"
+                android:drawableTop="@drawable/btn_incall_handsfree_d"
+                android:gravity="center"
+                android:text="@string/speaker"
+                android:textColor="@color/sdk_std_white"
+                android:textSize="22dp"/>
+
+            <cn.com.geartech.gcordsdk.ui.views.RecordButton
+                android:id="@+id/btn_record"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="64dp"
+                android:drawablePadding="8dp"
+                android:drawableTop="@drawable/btn_incall_record_d"
+                android:gravity="center"
+                android:text="@string/record"
+                android:textColor="@color/sdk_std_white"
+                android:textSize="22dp"/>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <cn.com.geartech.gcordsdk.ui.views.HangOffButton
+                android:id="@+id/btn_hangoff"
+                android:layout_width="245dp"
+                android:layout_height="72dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="70dp"
+                android:background="@drawable/hang_off_bg"
+                android:drawableTop="@drawable/hang_off_flag"
+                android:paddingTop="14dp"/>
+
+        </LinearLayout>
+
+
+        <cn.com.geartech.gcordsdk.ui.views.WaitingTextView
+            android:id="@+id/text_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="790dp"
+            android:textColor="@color/sdk_std_white"
+            android:textSize="22sp"/>
+
+        <RelativeLayout
+            android:id="@+id/call_in_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="790dp"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            >
+
+            <cn.com.geartech.gcordsdk.ui.views.RejectButton
+                android:id="@+id/call_in_reject"
+                android:layout_width="298dp"
+                android:layout_height="72dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="60dp"
+                android:layout_marginStart="70dp"
+                android:background="@drawable/hang_off_bg"
+                android:drawableTop="@drawable/hang_off_flag"
+                android:paddingTop="14dp"/>
+
+            <RelativeLayout
+                android:id="@+id/call_in_hangoff"
+                android:layout_width="298dp"
+                android:layout_height="72dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="60dp"
+                android:layout_marginLeft="70dp"
+                android:background="@drawable/hang_off_bg"
+                android:visibility="invisible"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/hang_off_flag"
+                    />
+
+
+            </RelativeLayout>
+
+            <cn.com.geartech.gcordsdk.ui.views.AnswerButton
+                android:id="@+id/call_in_answer"
+                android:layout_width="298dp"
+                android:layout_height="72dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="60dp"
+                android:layout_marginEnd="70dp"
+                android:background="@drawable/accept_call_bg"
+                android:drawableTop="@drawable/accept_call_flag"
+                android:paddingTop="14dp"/>
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

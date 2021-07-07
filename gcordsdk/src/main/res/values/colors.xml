@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="sdk_std_white">#FFFFFF</color>
+    <color name="sdk_std_black">#393C46</color>
+    <color name="sdk_std_gray_bg">#E8EAF1</color>
+    <color name="sdk_std_red">#FF6B70</color>
+    <color name="sdk_std_blue">#6198E8</color>
+    <color name="sdk_std_green">#40CD5E</color>
+
+    <color name="sdk_std_gray_text">#B0B2BC</color>
+    <color name="sdk_std_gray_text_2">#676767</color>
+
+    <color name="sdk_std_white_translucent">#6AFAFAFA</color>
+    <color name="sdk_breakline">#EAEBF0</color>
+    <color name="sdk_dialtab_dialpad_breakline">#CDCFD8</color>
+    <color name="std_bg">#EAECF2</color>
+    <color name="std_white">#FFFFFF</color>
+</resources>

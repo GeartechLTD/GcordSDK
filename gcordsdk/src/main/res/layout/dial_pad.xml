@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/dialpad"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentBottom="true"
+              android:layout_centerHorizontal="true"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="128px"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/one"
+                style="@style/uiv2DialTabDialPadStyle"
+                android:background="@drawable/uiv2_dialtab_num_01_d" />
+
+            <ImageView
+                style="@style/dialtab_dialpad_breakline"
+                android:layout_width="@dimen/uiv2_dialtab_dialpad_hor_spacing"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/two"
+                style="@style/uiv2DialTabDialPadStyle"
+                android:background="@drawable/uiv2_dialtab_num_02_d" />
+
+            <ImageView
+                style="@style/dialtab_dialpad_breakline"
+                android:layout_width="@dimen/uiv2_dialtab_dialpad_hor_spacing"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/three"
+                style="@style/uiv2DialTabDialPadStyle"
+                android:background="@drawable/uiv2_dialtab_num_03_d" />
+
+        </LinearLayout>
+
+        <ImageView
+            style="@style/dialtab_dialpad_breakline"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/uiv2_dialtab_dialpad_ver_spacing" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="128px">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/four"
+                style="@style/uiv2DialTabDialPadStyle"
+                android:background="@drawable/uiv2_dialtab_num_04_d" />
+
+            <ImageView
+                style="@style/dialtab_dialpad_breakline"
+                android:layout_width="@dimen/uiv2_dialtab_dialpad_hor_spacing"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/five"
+                style="@style/uiv2DialTabDialPadStyle"
+                android:background="@drawable/uiv2_dialtab_num_05_d" />
+
+            <ImageView
+                style="@style/dialtab_dialpad_breakline"
+                android:layout_width="@dimen/uiv2_dialtab_dialpad_hor_spacing"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/six"
+                style="@style/uiv2DialTabDialPadStyle"
+                android:background="@drawable/uiv2_dialtab_num_06_d" />
+
+        </LinearLayout>
+
+        <ImageView
+            style="@style/dialtab_dialpad_breakline"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/uiv2_dialtab_dialpad_ver_spacing" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="128px">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/seven"
+                style="@style/uiv2DialTabDialPadStyle"
+                android:background="@drawable/uiv2_dialtab_num_07_d" />
+
+            <ImageView
+                style="@style/dialtab_dialpad_breakline"
+                android:layout_width="@dimen/uiv2_dialtab_dialpad_hor_spacing"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/eight"
+                style="@style/uiv2DialTabDialPadStyle"
+                android:background="@drawable/uiv2_dialtab_num_08_d" />
+
+            <ImageView
+                style="@style/dialtab_dialpad_breakline"
+                android:layout_width="@dimen/uiv2_dialtab_dialpad_hor_spacing"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/nine"
+                style="@style/uiv2DialTabDialPadStyle"
+                android:background="@drawable/uiv2_dialtab_num_09_d" />
+
+        </LinearLayout>
+
+        <ImageView
+            style="@style/dialtab_dialpad_breakline"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/uiv2_dialtab_dialpad_ver_spacing" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="128px">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/star"
+                style="@style/uiv2DialTabDialPadStyle"
+                android:background="@drawable/uiv2_dialtab_num_star_d" />
+
+            <ImageView
+                style="@style/dialtab_dialpad_breakline"
+                android:layout_width="@dimen/uiv2_dialtab_dialpad_hor_spacing"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/zero"
+                style="@style/uiv2DialTabDialPadStyle"
+                android:background="@drawable/uiv2_dialtab_num_00_d" />
+
+            <ImageView
+                style="@style/dialtab_dialpad_breakline"
+                android:layout_width="@dimen/uiv2_dialtab_dialpad_hor_spacing"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/pound"
+                style="@style/uiv2DialTabDialPadStyle"
+                android:background="@drawable/uiv2_dialtab_num_sharp_d" />
+
+        </LinearLayout>
+
+        <ImageView
+            style="@style/dialtab_dialpad_breakline"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/uiv2_dialtab_dialpad_ver_spacing" />
+
+    </RelativeLayout>
+
+    <ImageView
+        style="@style/dialtab_dialpad_breakline"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/uiv2_dialtab_dialpad_ver_spacing" />
+
+</LinearLayout>

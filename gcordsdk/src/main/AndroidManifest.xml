@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cn.com.geartech.gcordsdk">
+
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+    <application>
+        <service
+            android:name=".service.PhoneService"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="cn.com.geartech.action.GET_ALL_CALL_LOGS"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".ui.GcordDialActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.InCallActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".ui.WallPaperActivity"/>
+    </application>
+
+</manifest>

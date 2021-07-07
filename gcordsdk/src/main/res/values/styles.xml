@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="DialtactsDigitsTextAppearance">
+        <item name="android:maxLines">1</item>
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:textSize">88dp</item>
+        <item name="android:freezesText">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:editable">true</item>
+        <item name="android:cursorVisible">false</item>
+        <item name="android:layout_weight">0</item>
+    </style>
+    <style name="uiv2DialTabDialPadStyle">
+        <item name="android:layout_width">256px</item>
+        <item name="android:layout_height">128px</item>
+        <item name="android:soundEffectsEnabled">false</item>
+    </style>
+
+    <style name="dialtab_dialpad_breakline">
+        <item name="android:background">@color/sdk_dialtab_dialpad_breakline</item>
+    </style>
+
+    <style name="inCallDialTabDialPadStyle">
+        <item name="android:layout_width">220px</item>
+        <item name="android:layout_height">110px</item>
+        <item name="android:soundEffectsEnabled">false</item>
+    </style>
+
+    <style name="defaultTextViewStyle">
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Title">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:background">@color/sdk_std_white</item>
+        <item name="android:textSize">26dp</item>
+        <item name="android:textColor">@color/sdk_std_black</item>
+        <item name="android:gravity">center</item>
+    </style>
+</resources>

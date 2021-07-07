@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="global_top_contacts">常用联系人</string>
+    <string name="wait_for_dial">手动拨号中. . .</string>
+    <string name="keyboard">键盘</string>
+    <string name="speaker">免提</string>
+    <string name="record">录音</string>
+    <string name="start_recording">开始录音</string>
+    <string name="record_is_saved">录音已保存</string>
+    <string name="flash">闪断</string>
+    <string name="descr_image">wall paper image</string>
+    <string name="recording_failed">录音失败</string>
+</resources>
