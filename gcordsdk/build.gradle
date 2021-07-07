@@ -7,13 +7,13 @@ apply plugin: 'com.github.dcendents.android-maven'
 group = 'com.github.GeartechLTD'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 30
 
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 22
         versionCode 1
-        versionName "3.2.92"
+        versionName "3.2.93"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -42,22 +42,25 @@ task sourcesJar(type: Jar) {
     classifier = 'sources'
 }
 
-task javadoc(type: Javadoc) {
-    failOnError  false
-    source = android.sourceSets.main.java.sourceFiles
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    classpath += configurations.compile
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allJava
+    archiveClassifier.set("sources")
 }
-
-// 制作文档(Javadoc)
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
+    archiveClassifier.set("javadoc")
     from javadoc.destinationDir
 }
 
-artifacts {
-    archives sourcesJar
-    archives javadocJar
+publishing {
+    publications {
+        mavenAar(MavenPublication) {
+            from components.java
+            afterEvaluate {
+                artifact javadocJar
+                artifact sourcesJar
+            }
+        }
+    }
 }
 
 dependencies {
