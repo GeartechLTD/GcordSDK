@@ -37,7 +37,7 @@ tasks.withType(JavaCompile) {
 }
 
 task sourcesJar(type: Jar) {
-    from sourceSets.main.allJava
+    from sourceSets.main.java.srcDirs
     archiveClassifier.set("sources")
 }
 task javadocJar(type: Jar, dependsOn: javadoc) {
