@@ -448,7 +448,7 @@ public class GcordSDK {
         return SimCardManager.getInstance();
     }
 
-    public WifiManager getWifiManager() {
-        return WifiManager.getInstance();
+    public GcordWifiManager getWifiManager() {
+        return GcordWifiManager.getInstance();
     }
 }

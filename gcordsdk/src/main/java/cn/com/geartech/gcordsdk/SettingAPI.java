@@ -1091,6 +1091,7 @@ public class SettingAPI {
 
     /**
      * 设置是否安装更新后马上重启
+     *
      * @param enable true-立即重启，false-不立即重启
      */
     public void enableRebootAfterInstall(boolean enable) {
@@ -1153,6 +1154,15 @@ public class SettingAPI {
 
     public static final String DEFAULT_TIME_ZONE_ID = "Asia/Shanghai";
 
+    /**
+     * 建议开启一条线程，调用loadAllTimeZoneData()获得所有可用的TimeZoneBean，
+     * 需设置时区就把相应的TimeZoneBean传给setTimeZone；
+     * <p>
+     * 需要获得当前在哪个时区则通过getTimeZoneId()拿到id，
+     * 此id为之前loadAllTimeZoneData的TimeZoneBean的id
+     *
+     * @return ArrayList<TimeZoneBean>
+     */
     public ArrayList<TimeZoneBean> loadAllTimeZoneData() {
         ArrayList<TimeZoneBean> data = new ArrayList<TimeZoneBean>();
 
@@ -1185,33 +1195,55 @@ public class SettingAPI {
         return data;
     }
 
+    /**
+     * 获取当前timezone的id
+     *
+     * @return timezone id
+     */
     public String getTimeZoneId() {
         return getTimeZoneIdImpl();
     }
 
+    /**
+     * 建议开启一条线程，调用loadAllTimeZoneData()获得所有可用的TimeZoneBean，
+     * 需设置时区就把相应的TimeZoneBean传给setTimeZone；
+     * <p>
+     * 需要获得当前在哪个时区则通过getTimeZoneId()拿到id，
+     * 此id为之前loadAllTimeZoneData的TimeZoneBean的id
+     *
+     * @param timeZone timezone id
+     */
     public void setTimeZone(TimeZoneBean timeZone) {
         try {
             setTimeZoneImpl(timeZone.id);
-        }catch (Throwable e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
     }
 
-    public int getScreenBrightness(){
+    /**
+     * 获取屏幕亮度
+     * @return 范围是10-255
+     */
+    public int getScreenBrightness() {
         return getScreenBrightnessImpl();
     }
 
     private int getScreenBrightnessImpl() {
         try {
             return GcordPreference.getInstance().getAIDL().getScreenBrightness();
-        }catch (Throwable e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
         return 0;
     }
 
+    /**
+     * 设置屏幕亮度
+     * @param brightness 范围是10-255
+     */
     public void setScreenBrightness(int brightness) {
-        if(brightness < 10 || brightness > 255)
+        if (brightness < 10 || brightness > 255)
             return;
 
         setScreenBrightnessImpl(brightness);
@@ -1220,12 +1252,16 @@ public class SettingAPI {
     private void setScreenBrightnessImpl(int brightness) {
         try {
             GcordPreference.getInstance().getAIDL().setScreenBrightness(brightness);
-        }catch (Throwable e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
     }
 
-
+    /**
+     * 获取屏保延时
+     * 返回只会是{SCREEN_SAVER_DELAY_01, SCREEN_SAVER_DELAY_02, SCREEN_SAVER_DELAY_03, SCREEN_SAVER_DELAY_04, SCREEN_SAVER_DELAY_05, SCREEN_SAVER_DELAY_06}
+     * @return delay
+     */
     public int getScreenSaverDelay() {
         return getScreenSaverDelayImpl();
     }
@@ -1240,16 +1276,20 @@ public class SettingAPI {
     private int getScreenSaverDelayImpl() {
         try {
             return GcordPreference.getInstance().getAIDL().getScreenSaverDelay();
-        }catch (Throwable e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
         return 0;
     }
 
-    void setScreenSaverDelay(int delay) {
+    /**
+     * 设置屏保延时，只支持{SCREEN_SAVER_DELAY_01, SCREEN_SAVER_DELAY_02, SCREEN_SAVER_DELAY_03, SCREEN_SAVER_DELAY_04, SCREEN_SAVER_DELAY_05, SCREEN_SAVER_DELAY_06}
+     * @param delay delay
+     */
+    public void setScreenSaverDelay(int delay) {
 
-        if(delay != SCREEN_SAVER_DELAY_01 && delay != SCREEN_SAVER_DELAY_02 && delay != SCREEN_SAVER_DELAY_03
-        && delay != SCREEN_SAVER_DELAY_04 && delay != SCREEN_SAVER_DELAY_05 && delay != SCREEN_SAVER_DELAY_06){
+        if (delay != SCREEN_SAVER_DELAY_01 && delay != SCREEN_SAVER_DELAY_02 && delay != SCREEN_SAVER_DELAY_03
+                && delay != SCREEN_SAVER_DELAY_04 && delay != SCREEN_SAVER_DELAY_05 && delay != SCREEN_SAVER_DELAY_06) {
             return;
         }
 
@@ -1259,36 +1299,44 @@ public class SettingAPI {
     private void setScreenSaverDelayImpl(int delay) {
         try {
             GcordPreference.getInstance().getAIDL().setScreenSaverDelay(delay);
-        }catch (Throwable e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * 获取屏保方式
+     * @return showPhoto显示照片；showBlackScreen黑屏
+     */
     public SaverMode getScreenSaverMode() {
         int mode = getScreenSaverModeImpl();
-        if(0 == mode) {
+        if (0 == mode) {
             return SaverMode.showPhoto;
-        }else
+        } else
             return SaverMode.showBlackScreen;
     }
 
     private int getScreenSaverModeImpl() {
         try {
             return GcordPreference.getInstance().getAIDL().getScreenSaverMode();
-        }catch (Throwable e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
         return 0;
     }
 
-    public enum SaverMode{
-        showPhoto, //0
-        showBlackScreen  //1
+    public enum SaverMode {
+        showPhoto, //0 //显示照片
+        showBlackScreen  //1 //黑屏
     }
 
+    /**
+     * 设置屏保方式
+     * @param mode showPhoto or showBlackScreen
+     */
     public void setScreenSaverMode(SaverMode mode) {
         int a = 1;
-        if(mode == SaverMode.showPhoto){
+        if (mode == SaverMode.showPhoto) {
             a = 0;
         }
         setScreenSaverModeImpl(a);
@@ -1296,15 +1344,19 @@ public class SettingAPI {
 
     private void setScreenSaverModeImpl(int i) {
         try {
-            if(i != 0 && i != 1)
+            if (i != 0 && i != 1)
                 return;
 
             GcordPreference.getInstance().getAIDL().setScreenSaverMode(i);
-        }catch (Throwable e){
+        } catch (Throwable e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * 是否开启自动时间
+     * @return boolean
+     */
     public boolean isAutoSetTimeOn() {
         return isAutoSetTimeOnImpl();
     }
@@ -1312,12 +1364,16 @@ public class SettingAPI {
     private boolean isAutoSetTimeOnImpl() {
         try {
             return GcordPreference.getInstance().getAIDL().isAutoSetTimeOn();
-        }catch (Throwable e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
         return false;
     }
 
+    /**
+     * 设置自动设置时间
+     * @param on boolean
+     */
     public void setAutoSetTimeOn(boolean on) {
         setAutoSetTimeOnImpl(on);
     }
@@ -1325,7 +1381,7 @@ public class SettingAPI {
     private void setAutoSetTimeOnImpl(boolean on) {
         try {
             GcordPreference.getInstance().getAIDL().setAutoSetTimeOn(on);
-        }catch (Throwable e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
     }
@@ -1333,7 +1389,7 @@ public class SettingAPI {
     private String getTimeZoneIdImpl() {
         try {
             return GcordPreference.getInstance().getAIDL().getTimeZone();
-        }catch (Throwable e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
         return null;
@@ -1342,7 +1398,7 @@ public class SettingAPI {
     private void setTimeZoneImpl(String timeZoneId) {
         try {
             GcordPreference.getInstance().getAIDL().setTimeZone(timeZoneId);
-        }catch (Throwable e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
     }

@@ -2,10 +2,22 @@ package cn.com.geartech.gcordsdk;
 
 public final class SimCardManager {
 
+    /**
+     * sim卡index 1
+     * 任何时候 sim卡index只可能是1，或者2；
+     * 1是左边的小卡，2是右边的大卡
+     */
     public static final int SIM_INDEX_1 = 1;
+
+    /**
+     * sim卡index 2
+     * 任何时候 sim卡index只可能是1，或者2；
+     * 1是左边的小卡，2是右边的大卡
+     */
     public static final int SIM_INDEX_2 = 2;
 
     private static SimCardManager instance;
+
 
     protected SimCardManager() {
 
@@ -18,14 +30,30 @@ public final class SimCardManager {
         return instance;
     }
 
+    /**
+     * 获取默认的用于拨号的sim卡index
+     *
+     * @return 1 or 2
+     */
     public int getDefaultPhoneSimIndex() {
         return getDefaultPhoneIndexImpl();
     }
 
+    /**
+     * 获取默认的用于数据使用的sim卡index
+     *
+     * @return 1 or 2
+     */
     public int getDefaultDataSimIndex() {
         return getDefaultDataIndexImpl();
     }
 
+    /**
+     * 设置默认的用于拨号的sim卡index
+     *
+     * @param index 只接受1 or 2
+     * @return 是否成功
+     */
     public boolean setDefaultPhoneSim(int index) {
         if (index != SIM_INDEX_1 && index != SIM_INDEX_2) {
             return false;
@@ -33,6 +61,12 @@ public final class SimCardManager {
         return setDefaultPhoneImpl(index);
     }
 
+    /**
+     * 设置默认的用于数据使用的sim卡index
+     *
+     * @param index 只接受1 or 2
+     * @return 是否成功
+     */
     public boolean setDefaultDataSim(int index) {
         if (index != SIM_INDEX_1 && index != SIM_INDEX_2) {
             return false;
@@ -40,14 +74,30 @@ public final class SimCardManager {
         return setDefaultDataSimImpl(index);
     }
 
+    /**
+     * 设置是否开启数据（即sim卡上网）
+     *
+     * @param enabled boolean
+     * @return 是否成功
+     */
     public boolean setDataEnabled(boolean enabled) {
         return setDataEnabledImpl(enabled);
     }
 
+    /**
+     * 获取是否开启数据
+     * @return 是/否
+     */
     public boolean isDataEnabled() {
         return isDataEnabledImpl();
     }
 
+    /**
+     * 获取该index的sim卡是否已准备就绪
+     * 注：开机后，android可能需要最多1分钟去准备sim卡
+     * @param index 只接受1 or 2
+     * @return 是/否
+     */
     public boolean isSimReady(int index) {
         if (index != SIM_INDEX_1 && index != SIM_INDEX_2) {
             return false;
@@ -55,14 +105,27 @@ public final class SimCardManager {
         return isSimReadyImpl(index);
     }
 
+    /**
+     * 是否有sim卡已准备就绪
+     * @return boolean
+     */
     public boolean isAnySimReady() {
         return isSimReady(SIM_INDEX_1) || isSimReady(SIM_INDEX_2);
     }
 
+    /**
+     * 是否2张sim卡均已准备就绪
+     * @return boolean
+     */
     public boolean isDualSimReady() {
         return isSimReady(SIM_INDEX_1) && isSimReady(SIM_INDEX_2);
     }
 
+    /**
+     * 获取该index的sim卡运营商名字（如：中国联通、中国电信）
+     * @param index 只接受1 or 2
+     * @return 中国联通、中国电信 等
+     */
     public String getSimOperator(int index) {
         if (index != SIM_INDEX_1 && index != SIM_INDEX_2) {
             return null;
@@ -70,14 +133,27 @@ public final class SimCardManager {
         return getSimOperatorImpl(index);
     }
 
+    /**
+     * 获取用于默认通话的sim卡运营商名字
+     * @return 中国联通、中国电信 等
+     */
     public String getSimOperator() {
         return getSimOperatorImpl(getDefaultPhoneSimIndex());
     }
 
+    /**
+     * 获取用于默认通话的sim卡的电话号码。如果无法获得号码，则为空（与android系统显示是一致的）
+     * @return 电话号码
+     */
     public String getPhoneNumber() {
         return getPhoneNumberImpl(getDefaultPhoneSimIndex());
     }
 
+    /**
+     * 获取该index的sim卡的电话号码。如果无法获得号码，则为空（与android系统显示是一致的）
+     * @param index 只接受1 or 2
+     * @return 电话号码
+     */
     public String getPhoneNumber(int index) {
         if (index != SIM_INDEX_1 && index != SIM_INDEX_2) {
             return null;
@@ -85,6 +161,12 @@ public final class SimCardManager {
         return getPhoneNumberImpl(index);
     }
 
+    /**
+     * 获取正在通话的sim卡的index，比如：如果sim卡1在通话（这个“通话”指正在拨号，正在进行通话，
+     *      正在挂断，或者来电时正在响铃等状态），则返回1，无sim卡在通话则返回-1
+     * 可用于插入双sim卡时，获取用户是打电话给哪一张sim卡
+     * @return 1 or 2
+     */
     public int getIncallSimIndex() {
         return getIncallSimIndexImpl();
     }
