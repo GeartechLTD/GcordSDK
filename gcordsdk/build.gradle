@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
-
-group = 'com.github.GeartechLTD'
+apply plugin:'maven-publish'
+apply plugin:'maven'
 
 android {
     compileSdkVersion 30
@@ -10,7 +10,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 22
         versionCode 1
-        versionName "3.2.95"
+        versionName "3.2.96"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -66,4 +66,35 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 artifacts {
     archives sourcesJar
     archives javadocJar
+}
+
+//project.afterEvaluate {
+//    publishing {
+//        publications {
+//            aar(MavenPublication) {
+//                groupId 'com.github.GeartechLTD'
+//                version android.defaultConfig.versionName
+//                artifactId "GeartechLTD"
+//
+//                artifact bundleReleaseAar
+//                artifact sourcesJar
+//                artifact javadocJar
+//            }
+//        }
+//    }
+//}
+
+publishing {
+    publications {
+        aar(MavenPublication) {
+            groupId 'com.github.GeartechLTD'
+            version android.defaultConfig.versionName
+            artifactId 'GeartechLTD'
+            afterEvaluate {
+                artifact bundleReleaseAar
+                artifact sourcesJar
+                artifact javadocJar
+            }
+        }
+    }
 }

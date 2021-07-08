@@ -115,13 +115,42 @@ public final class EthernetManager {
         return false;
     }
 
+    public Integer getProxyPort() {
+        return getProxyPortImpl();
+    }
+
+    private Integer getProxyPortImpl() {
+        try {
+            int port = GcordPreference.getInstance().getAIDL().getProxyPort();
+            if(port == -1)
+                return null;
+            return port;
+        }catch (Throwable e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public String getProxyHost() {
+        return getProxyHostImpl();
+    }
+
+    private String getProxyHostImpl() {
+        try {
+            return GcordPreference.getInstance().getAIDL().getProxyHost();
+        }catch (Throwable e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     private boolean isDHCPImpl() {
         try {
             return GcordPreference.getInstance().getAIDL().isUseDHCP();
         }catch (Throwable e){
             e.printStackTrace();
         }
-        return false;
+        return true;
     }
 
     private boolean isEthernetCablePluginImpl(){
