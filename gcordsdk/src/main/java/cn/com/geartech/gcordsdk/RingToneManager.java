@@ -35,8 +35,9 @@ public class RingToneManager {
         return PSTNInternal.getInstance().setCurrentRingTone(path);
     }
 
-    /*
-    获取当前铃声路径
+    /**
+     * 当前设置的自定义铃声(global ringtone)的完整路径
+     * @return filePath
      */
     public String getGlobalRingTonePath(){
 
@@ -71,20 +72,36 @@ public class RingToneManager {
 
     }
 
+    /**
+     * 当前设置的和弦铃声(classic ringtone)的完整路径
+     * @return filePath
+     */
     public String getClassicRingPath()
     {
         return PSTNInternal.getInstance().getClassicRingPath();
     }
 
+    /**
+     * 获取和弦铃声(classic ringtone)文件夹的路径
+     * @return
+     */
     public String getClassicalRingtoneFolderPath() {
         return PSTNInternal.getInstance().getClassicalRingtoneFolderPath();
     }
 
+    /**
+     * 获取自定义铃声(global ringtone)文件夹的路径
+     * @return folder
+     */
     public String getRingToneFolderPath(){
 
         return PSTNInternal.getInstance().getRingToneFolderPath();
     }
 
+    /**
+     * 获取系统支持的最大音量
+     * @return int
+     */
     public int getMaxVolume() {
         return getMaxVolumeImpl();
     }
@@ -98,6 +115,10 @@ public class RingToneManager {
         return 0;
     }
 
+    /**
+     * 获取当前铃声音量
+     * @return int
+     */
     public int getCurrentVolume() {
         return getCurrentVolumeImpl();
     }
@@ -111,6 +132,10 @@ public class RingToneManager {
         return 0;
     }
 
+    /**
+     * 设置铃声音量
+     * @param volume int 范围：0到getMaxVolume()
+     */
     public void setVolume(int volume){
         setVolumeImpl(volume);
     }
@@ -123,6 +148,10 @@ public class RingToneManager {
         }
     }
 
+    /**
+     * 是否启用触摸音效
+     * @return boolean
+     */
     boolean isTouchEffectEnabled(){
         return isTouchEffectEnabledImpl();
     }
@@ -136,7 +165,11 @@ public class RingToneManager {
         return false;
     }
 
-    void setTouchEffectEnabled(boolean enabled){
+    /**
+     * 设置触摸音效的开关
+     * @param enabled boolean
+     */
+    public void setTouchEffectEnabled(boolean enabled){
         setTouchEffectEnabledImpl(enabled);
     }
 

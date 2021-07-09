@@ -431,7 +431,7 @@ public class CellPhoneManager {
      * @param phoneNumber 呼出的号码
      * @param simIndex sim卡，只接受SimCardManager.SIM_INDEX_1 = 1和 SimCardManager.SIM_INDEX_2 = 2;
      */
-    void makeCallWithSimIndex(String phoneNumber, int simIndex)
+    public void makeCallWithSimIndex(String phoneNumber, int simIndex)
     {
         try {
             if(simIndex != SimCardManager.SIM_INDEX_1 && simIndex != SimCardManager.SIM_INDEX_2)
@@ -468,7 +468,7 @@ public class CellPhoneManager {
      * 获取当前通话的call id
      * @return callId
      */
-    String getCurrentCallId()
+    public String getCurrentCallId()
     {
         try {
             if(cellPhoneAidlInterface != null)

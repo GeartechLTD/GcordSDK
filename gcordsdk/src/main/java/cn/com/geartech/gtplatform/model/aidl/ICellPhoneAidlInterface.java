@@ -11,150 +11,117 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
          * Demonstrates some basic types that you can use as parameters
          * and return values in AIDL.
          */
-    @Override
-    public void makeCall(String number) throws android.os.RemoteException
+    @Override public void makeCall(String number) throws android.os.RemoteException
     {
     }
-    @Override
-    public void makeCallWithSimIndex(String number, int simIndex) throws android.os.RemoteException
+    @Override public void makeCallWithSimIndex(String number, int simIndex) throws android.os.RemoteException
     {
     }
-    @Override
-    public void dialDTMF(String dtmf) throws android.os.RemoteException
+    @Override public void dialDTMF(String dtmf) throws android.os.RemoteException
     {
     }
-    @Override
-    public void playDTMF(String dtmf, String callId) throws android.os.RemoteException
+    @Override public void playDTMF(String dtmf, String callId) throws android.os.RemoteException
     {
     }
-    @Override
-    public void stopPlayDTMF(String callId) throws android.os.RemoteException
+    @Override public void stopPlayDTMF(String callId) throws android.os.RemoteException
     {
     }
-    @Override
-    public String getCurrentCallId() throws android.os.RemoteException
+    @Override public String getCurrentCallId() throws android.os.RemoteException
     {
       return null;
     }
-    @Override
-    public boolean isInCall() throws android.os.RemoteException
+    @Override public boolean isInCall() throws android.os.RemoteException
     {
       return false;
     }
-    @Override
-    public int getCallStatus() throws android.os.RemoteException
+    @Override public int getCallStatus() throws android.os.RemoteException
     {
       return 0;
     }
-    @Override
-    public String getCurrentCallNumber() throws android.os.RemoteException
+    @Override public String getCurrentCallNumber() throws android.os.RemoteException
     {
       return null;
     }
-    @Override
-    public void acceptCall(String callId) throws android.os.RemoteException
+    @Override public void acceptCall(String callId) throws android.os.RemoteException
     {
     }
-    @Override
-    public void endCall(String callId) throws android.os.RemoteException
+    @Override public void endCall(String callId) throws android.os.RemoteException
     {
     }
-    @Override
-    public void endCurrentCall() throws android.os.RemoteException
+    @Override public void endCurrentCall() throws android.os.RemoteException
     {
     }
-    @Override
-    public void rejectCall(String callId) throws android.os.RemoteException
+    @Override public void rejectCall(String callId) throws android.os.RemoteException
     {
     }
-    @Override
-    public void setMute(boolean mute) throws android.os.RemoteException
+    @Override public void setMute(boolean mute) throws android.os.RemoteException
     {
     }
-    @Override
-    public boolean isMute() throws android.os.RemoteException
+    @Override public boolean isMute() throws android.os.RemoteException
     {
       return false;
     }
-    @Override
-    public void startRecording() throws android.os.RemoteException
+    @Override public void startRecording() throws android.os.RemoteException
     {
     }
-    @Override
-    public void stopRecording() throws android.os.RemoteException
+    @Override public void stopRecording() throws android.os.RemoteException
     {
     }
-    @Override
-    public boolean isRecording() throws android.os.RemoteException
+    @Override public boolean isRecording() throws android.os.RemoteException
     {
       return false;
     }
-    @Override
-    public int getCurrentInCallVolume() throws android.os.RemoteException
+    @Override public int getCurrentInCallVolume() throws android.os.RemoteException
     {
       return 0;
     }
-    @Override
-    public int getMaxInCallVolume() throws android.os.RemoteException
+    @Override public int getMaxInCallVolume() throws android.os.RemoteException
     {
       return 0;
     }
-    @Override
-    public void setInCallVolume(int volume) throws android.os.RemoteException
+    @Override public void setInCallVolume(int volume) throws android.os.RemoteException
     {
     }
-    @Override
-    public boolean isHandsFreeOn() throws android.os.RemoteException
+    @Override public boolean isHandsFreeOn() throws android.os.RemoteException
     {
       return false;
     }
-    @Override
-    public void setHandsFreeOn(ICommonCallback callback) throws android.os.RemoteException
+    @Override public void setHandsFreeOn(ICommonCallback callback) throws android.os.RemoteException
     {
     }
-    @Override
-    public void setHandleOn(ICommonCallback callback) throws android.os.RemoteException
+    @Override public void setHandleOn(ICommonCallback callback) throws android.os.RemoteException
     {
     }
-    @Override
-    public boolean isSIMCardAvailable() throws android.os.RemoteException
+    @Override public boolean isSIMCardAvailable() throws android.os.RemoteException
     {
       return false;
     }
-    @Override
-    public boolean isIncomingCall() throws android.os.RemoteException
+    @Override public boolean isIncomingCall() throws android.os.RemoteException
     {
       return false;
     }
-    @Override
-    public void setBTOn(ICommonCallback callback) throws android.os.RemoteException
+    @Override public void setBTOn(ICommonCallback callback) throws android.os.RemoteException
     {
     }
-    @Override
-    public boolean isBTOn() throws android.os.RemoteException
+    @Override public boolean isBTOn() throws android.os.RemoteException
     {
       return false;
     }
-    @Override
-    public boolean isBTHeadsetConnected() throws android.os.RemoteException
+    @Override public boolean isBTHeadsetConnected() throws android.os.RemoteException
     {
       return false;
     }
-    @Override
-    public long getCurrentCallBeginTS() throws android.os.RemoteException
+    @Override public long getCurrentCallBeginTS() throws android.os.RemoteException
     {
       return 0L;
     }
-    @Override
-    public void startRecordingWav() throws android.os.RemoteException
+    @Override public void startRecordingWav() throws android.os.RemoteException
     {
     }
-    @Override
-    public void startRecordingMp3() throws android.os.RemoteException
+    @Override public void startRecordingMp3() throws android.os.RemoteException
     {
     }
-    @Override
-    public void startRecordingMp3WithParams(int sampleRate, int bitRate) throws android.os.RemoteException
+    @Override public void startRecordingMp3WithParams(int sampleRate, int bitRate) throws android.os.RemoteException
     {
     }
     @Override
@@ -186,13 +153,11 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
       }
       return new Proxy(obj);
     }
-    @Override
-    public android.os.IBinder asBinder()
+    @Override public android.os.IBinder asBinder()
     {
       return this;
     }
-    @Override
-    public boolean onTransact(int code, android.os.Parcel data, android.os.Parcel reply, int flags) throws android.os.RemoteException
+    @Override public boolean onTransact(int code, android.os.Parcel data, android.os.Parcel reply, int flags) throws android.os.RemoteException
     {
       String descriptor = DESCRIPTOR;
       switch (code)
@@ -494,8 +459,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
       {
         mRemote = remote;
       }
-      @Override
-      public android.os.IBinder asBinder()
+      @Override public android.os.IBinder asBinder()
       {
         return mRemote;
       }
@@ -507,8 +471,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
            * Demonstrates some basic types that you can use as parameters
            * and return values in AIDL.
            */
-      @Override
-      public void makeCall(String number) throws android.os.RemoteException
+      @Override public void makeCall(String number) throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -527,8 +490,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
           _data.recycle();
         }
       }
-      @Override
-      public void makeCallWithSimIndex(String number, int simIndex) throws android.os.RemoteException
+      @Override public void makeCallWithSimIndex(String number, int simIndex) throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -548,8 +510,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
           _data.recycle();
         }
       }
-      @Override
-      public void dialDTMF(String dtmf) throws android.os.RemoteException
+      @Override public void dialDTMF(String dtmf) throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -568,8 +529,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
           _data.recycle();
         }
       }
-      @Override
-      public void playDTMF(String dtmf, String callId) throws android.os.RemoteException
+      @Override public void playDTMF(String dtmf, String callId) throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -589,8 +549,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
           _data.recycle();
         }
       }
-      @Override
-      public void stopPlayDTMF(String callId) throws android.os.RemoteException
+      @Override public void stopPlayDTMF(String callId) throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -609,8 +568,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
           _data.recycle();
         }
       }
-      @Override
-      public String getCurrentCallId() throws android.os.RemoteException
+      @Override public String getCurrentCallId() throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -630,8 +588,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
         }
         return _result;
       }
-      @Override
-      public boolean isInCall() throws android.os.RemoteException
+      @Override public boolean isInCall() throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -651,8 +608,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
         }
         return _result;
       }
-      @Override
-      public int getCallStatus() throws android.os.RemoteException
+      @Override public int getCallStatus() throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -672,8 +628,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
         }
         return _result;
       }
-      @Override
-      public String getCurrentCallNumber() throws android.os.RemoteException
+      @Override public String getCurrentCallNumber() throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -693,8 +648,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
         }
         return _result;
       }
-      @Override
-      public void acceptCall(String callId) throws android.os.RemoteException
+      @Override public void acceptCall(String callId) throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -713,8 +667,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
           _data.recycle();
         }
       }
-      @Override
-      public void endCall(String callId) throws android.os.RemoteException
+      @Override public void endCall(String callId) throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -733,8 +686,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
           _data.recycle();
         }
       }
-      @Override
-      public void endCurrentCall() throws android.os.RemoteException
+      @Override public void endCurrentCall() throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -752,8 +704,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
           _data.recycle();
         }
       }
-      @Override
-      public void rejectCall(String callId) throws android.os.RemoteException
+      @Override public void rejectCall(String callId) throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -772,8 +723,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
           _data.recycle();
         }
       }
-      @Override
-      public void setMute(boolean mute) throws android.os.RemoteException
+      @Override public void setMute(boolean mute) throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -792,8 +742,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
           _data.recycle();
         }
       }
-      @Override
-      public boolean isMute() throws android.os.RemoteException
+      @Override public boolean isMute() throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -813,8 +762,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
         }
         return _result;
       }
-      @Override
-      public void startRecording() throws android.os.RemoteException
+      @Override public void startRecording() throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -832,8 +780,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
           _data.recycle();
         }
       }
-      @Override
-      public void stopRecording() throws android.os.RemoteException
+      @Override public void stopRecording() throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -851,8 +798,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
           _data.recycle();
         }
       }
-      @Override
-      public boolean isRecording() throws android.os.RemoteException
+      @Override public boolean isRecording() throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -872,8 +818,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
         }
         return _result;
       }
-      @Override
-      public int getCurrentInCallVolume() throws android.os.RemoteException
+      @Override public int getCurrentInCallVolume() throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -893,8 +838,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
         }
         return _result;
       }
-      @Override
-      public int getMaxInCallVolume() throws android.os.RemoteException
+      @Override public int getMaxInCallVolume() throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -914,8 +858,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
         }
         return _result;
       }
-      @Override
-      public void setInCallVolume(int volume) throws android.os.RemoteException
+      @Override public void setInCallVolume(int volume) throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -934,8 +877,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
           _data.recycle();
         }
       }
-      @Override
-      public boolean isHandsFreeOn() throws android.os.RemoteException
+      @Override public boolean isHandsFreeOn() throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -955,8 +897,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
         }
         return _result;
       }
-      @Override
-      public void setHandsFreeOn(ICommonCallback callback) throws android.os.RemoteException
+      @Override public void setHandsFreeOn(ICommonCallback callback) throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -975,8 +916,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
           _data.recycle();
         }
       }
-      @Override
-      public void setHandleOn(ICommonCallback callback) throws android.os.RemoteException
+      @Override public void setHandleOn(ICommonCallback callback) throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -995,8 +935,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
           _data.recycle();
         }
       }
-      @Override
-      public boolean isSIMCardAvailable() throws android.os.RemoteException
+      @Override public boolean isSIMCardAvailable() throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -1016,8 +955,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
         }
         return _result;
       }
-      @Override
-      public boolean isIncomingCall() throws android.os.RemoteException
+      @Override public boolean isIncomingCall() throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -1037,8 +975,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
         }
         return _result;
       }
-      @Override
-      public void setBTOn(ICommonCallback callback) throws android.os.RemoteException
+      @Override public void setBTOn(ICommonCallback callback) throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -1057,8 +994,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
           _data.recycle();
         }
       }
-      @Override
-      public boolean isBTOn() throws android.os.RemoteException
+      @Override public boolean isBTOn() throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -1078,8 +1014,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
         }
         return _result;
       }
-      @Override
-      public boolean isBTHeadsetConnected() throws android.os.RemoteException
+      @Override public boolean isBTHeadsetConnected() throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -1099,8 +1034,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
         }
         return _result;
       }
-      @Override
-      public long getCurrentCallBeginTS() throws android.os.RemoteException
+      @Override public long getCurrentCallBeginTS() throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -1120,8 +1054,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
         }
         return _result;
       }
-      @Override
-      public void startRecordingWav() throws android.os.RemoteException
+      @Override public void startRecordingWav() throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -1139,8 +1072,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
           _data.recycle();
         }
       }
-      @Override
-      public void startRecordingMp3() throws android.os.RemoteException
+      @Override public void startRecordingMp3() throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
@@ -1158,8 +1090,7 @@ public interface ICellPhoneAidlInterface extends android.os.IInterface
           _data.recycle();
         }
       }
-      @Override
-      public void startRecordingMp3WithParams(int sampleRate, int bitRate) throws android.os.RemoteException
+      @Override public void startRecordingMp3WithParams(int sampleRate, int bitRate) throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
