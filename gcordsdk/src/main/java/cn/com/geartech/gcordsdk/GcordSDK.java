@@ -108,10 +108,8 @@ public class GcordSDK {
         registerInitCallback(MTKBTManager.getInstance());
 
 
-
         phoneAPIInstance = PhoneAPI.getInstance();
         sipPhoneManager = SipPhoneManager.getInstance();
-
 
         registerInitCallback(sipPhoneManager);
 
@@ -163,8 +161,6 @@ public class GcordSDK {
         preference = GcordPreference.getInstance();
         registerInitCallback(preference);
         preference.init(context);
-
-
     }
     static final String LAUNCHER_PACKAGE_NAME = "cn.com.geartech.app";
 
@@ -444,11 +440,4 @@ public class GcordSDK {
         return EthernetManager.getInstance();
     }
 
-    public SimCardManager getSimCardManager() {
-        return SimCardManager.getInstance();
-    }
-
-    public GcordWifiManager getWifiManager() {
-        return GcordWifiManager.getInstance();
-    }
 }

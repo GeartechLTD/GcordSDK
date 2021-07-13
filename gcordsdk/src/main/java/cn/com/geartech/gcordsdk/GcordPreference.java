@@ -26,7 +26,7 @@ import cn.com.geartech.gcordsdk.dao.GlobalSettingConstants;
  * Created by pangyuning on 17/5/19.
  */
 
-public final class GcordPreference extends GcordHelper {
+public class GcordPreference extends GcordHelper {
 
     public final static String GCORD_PREFERENCE_SERVICE = "cn.com.geartech.action.gcord_preference_service";
     private static final String HIDE_PHONE_NUMBER_KEY = "HIDE_PHONE_NUMBER_KEY";
@@ -44,7 +44,7 @@ public final class GcordPreference extends GcordHelper {
         return SingletonHolder.instance;
     }
 
-    void init(Context application) {
+    void init(Application application) {
         if (callBack == null) {
             callBack = new IGcordPreferenceCallBack.Stub() {
 
@@ -53,13 +53,6 @@ public final class GcordPreference extends GcordHelper {
                     if (gcordPreferenceCallBack != null)
                         return gcordPreferenceCallBack.handlePhoneNumber(phoneNumber);
                     return phoneNumber;
-                }
-
-                @Override
-                public void onEthernetSettingResult(boolean success, String message) throws RemoteException {
-                    if(EthernetManager.getInstance().ethernetCallback != null){
-                        EthernetManager.getInstance().ethernetCallback.onResult(success, message);
-                    }
                 }
             };
         }
@@ -459,12 +452,5 @@ public final class GcordPreference extends GcordHelper {
         public String handlePhoneNumber(String phoneNumber) {
             return phoneNumber;
         }
-    }
-
-    protected IGcordPreferenceAIDL getAIDL(){
-        if(iGcordPreferenceAIDL == null) {
-            this.init(GcordSDK.getInstance().getContext());
-        }
-        return iGcordPreferenceAIDL;
     }
 }

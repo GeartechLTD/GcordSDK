@@ -62,11 +62,4 @@ interface ICellPhoneAidlInterface {
     boolean isBTOn();
 
     boolean isBTHeadsetConnected();
-
-    long getCurrentCallBeginTS();
-    void startRecordingWav();
-    void startRecordingMp3();
-    void startRecordingMp3WithParams(int sampleRate, int bitRate);
-    void makeCallWithSimIndex(String number, int simIndex);
-
 }

@@ -427,27 +427,6 @@ public class CellPhoneManager {
     }
 
     /**
-     * 使用指定的sim卡拨号
-     * @param phoneNumber 呼出的号码
-     * @param simIndex sim卡，只接受SimCardManager.SIM_INDEX_1 = 1和 SimCardManager.SIM_INDEX_2 = 2;
-     */
-    public void makeCallWithSimIndex(String phoneNumber, int simIndex)
-    {
-        try {
-            if(simIndex != SimCardManager.SIM_INDEX_1 && simIndex != SimCardManager.SIM_INDEX_2)
-                return;
-
-            if(cellPhoneAidlInterface != null)
-            {
-                cellPhoneAidlInterface.makeCallWithSimIndex(phoneNumber, simIndex);
-            }
-        }catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
-
-    /**
      * 通话中发送dtmf号码
      * @param dtmfNum 发送的号码,只允许0~9*#
      */
@@ -468,7 +447,7 @@ public class CellPhoneManager {
      * 获取当前通话的call id
      * @return callId
      */
-    public String getCurrentCallId()
+    String getCurrentCallId()
     {
         try {
             if(cellPhoneAidlInterface != null)

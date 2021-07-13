@@ -5,5 +5,4 @@ package cn.com.geartech.app;
 
 interface IGcordPreferenceCallBack {
     String handlePhoneNumber(String phoneNumber);
-    void onEthernetSettingResult(boolean success, String message);
 }

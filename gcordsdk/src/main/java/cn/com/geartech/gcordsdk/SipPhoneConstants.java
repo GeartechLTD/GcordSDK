@@ -29,7 +29,7 @@ public class SipPhoneConstants {
 
     public final static int EN_MTC_TPT_UDP = 0; /**< @brief UDP transport */
     public final static int EN_MTC_TPT_TCP = EN_MTC_TPT_UDP + 1; /**< @brief TCP transport */
-    public final static int EN_MTC_TPT_TLS = EN_MTC_TPT_TCP + 1; /**< @brief TCP transport */
+    public final static int EN_MTC_TPT_TLS = EN_MTC_TPT_TCP + 1; /**< @brief TLS transport */
 
 
     public final static int INVALIDID = -1;
