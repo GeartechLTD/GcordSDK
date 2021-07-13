@@ -152,7 +152,7 @@ public class RingToneManager {
      * 是否启用触摸音效
      * @return boolean
      */
-    boolean isTouchEffectEnabled(){
+    public boolean isTouchEffectEnabled(){
         return isTouchEffectEnabledImpl();
     }
 
