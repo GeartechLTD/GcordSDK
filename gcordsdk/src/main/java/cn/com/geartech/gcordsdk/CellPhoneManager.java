@@ -447,7 +447,7 @@ public class CellPhoneManager {
      * 获取当前通话的call id
      * @return callId
      */
-    String getCurrentCallId()
+    public String getCurrentCallId()
     {
         try {
             if(cellPhoneAidlInterface != null)
