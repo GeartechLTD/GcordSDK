@@ -10,7 +10,6 @@ interface ICellPhoneAidlInterface {
      * and return values in AIDL.
      */
     void makeCall(String number);
-    void makeCallWithSimIndex(String number, int simIndex);
 
     void dialDTMF(String dtmf);
 
@@ -68,4 +67,6 @@ interface ICellPhoneAidlInterface {
     void startRecordingWav();
     void startRecordingMp3();
     void startRecordingMp3WithParams(int sampleRate, int bitRate);
+    void makeCallWithSimIndex(String number, int simIndex);
+
 }
