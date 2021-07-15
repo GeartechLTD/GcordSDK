@@ -60,4 +60,7 @@ interface IGcordPreferenceAIDL {
     void setAutoSetTimeOn(boolean on);
     String getTimeZone();
     void setTimeZone(String timeZone);
+
+    boolean isRadioOn();
+    void setRadioOn(boolean on);
 }

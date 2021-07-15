@@ -171,6 +171,39 @@ public final class SimCardManager {
         return getIncallSimIndexImpl();
     }
 
+    /**
+     * 默认拨号sim卡{@link #getDefaultPhoneSimIndex()}是否打开
+     * @return boolean
+     */
+    public boolean isRadioOn() {
+        return isRadioOnImpl();
+    }
+
+    private boolean isRadioOnImpl() {
+        try {
+            return GcordPreference.getInstance().getAIDL().isRadioOn();
+        }catch (Throwable e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * 开关默认拨号的sim卡{@link #getDefaultPhoneSimIndex()}
+     * @param on boolean
+     */
+    public void setRadioOn(boolean on) {
+        setRadioOnImpl(on);
+    }
+
+    private void setRadioOnImpl(boolean on) {
+        try {
+            GcordPreference.getInstance().getAIDL().setRadioOn(on);
+        }catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
     private boolean isSimReadyImpl(int index) {
         try {
             return GcordPreference.getInstance().getAIDL().isSimReady(index);
