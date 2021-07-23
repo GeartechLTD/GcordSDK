@@ -89,7 +89,7 @@ public class AreaCodeManager {
         return res;
     }
 
-    public void getAreaCode(String phoneNum, final boolean shouldChcekOnline, final GetAreaCodeCallback callback) {
+    public void getAreaCode(String phoneNum, final boolean shouldCheckOnline, final GetAreaCodeCallback callback) {
         //Log.d("GcordSDK", "enter getAreaCode");
         if (phoneNum == null || phoneNum.trim().length() <= 0) {
             if (callback != null) callback.onGetAreaCode(null);
@@ -205,70 +205,8 @@ public class AreaCodeManager {
                                     ex.printStackTrace();
                                 }
                             }
-                            if (shouldChcekOnline && checkGTPVersion()) {
-                                GTAidlHandler.getInstance().checkNumber(num, new ICommonCallback.Stub() {
-                                    @Override
-                                    public void onComplete(boolean ret, int num, int num2, String s, String s1) throws RemoteException {
-
-                                        try {
-                                            if (!ret || TextUtils.isEmpty(s)) {
-                                                if (callback != null) {
-                                                    handler.post(new Runnable() {
-                                                        @Override
-                                                        public void run() {
-                                                            callback.onGetAreaCode(null);
-                                                        }
-                                                    });
-                                                }
-                                            } else {
-                                                final AreaCodeItem item = new AreaCodeItem();
-                                                JSONTokener jsonTokener = new JSONTokener(s);
-                                                JSONObject jsonObject = (JSONObject) jsonTokener.nextValue();
-                                                String area = "";
-                                                if (jsonObject.has("province")) {
-                                                    area += jsonObject.getString("province");
-                                                    area += " ";
-                                                }
-
-                                                if (jsonObject.has("city")) {
-                                                    area += jsonObject.getString("city");
-                                                    item.setAreaCode(AreaCodeIndex.getAreaCode(jsonObject.getString("city")));
-                                                }
-
-                                                item.setMobileArea(area);
-
-                                                if (jsonObject.has("provider")) {
-                                                    item.setProvider(jsonObject.getString("provider"));
-                                                }
-
-                                                if (jsonObject.has("report")) {
-                                                    item.setMark(jsonObject.getString("report"));
-                                                }
-
-                                                if (callback != null) {
-                                                    handler.post(new Runnable() {
-                                                        @Override
-                                                        public void run() {
-                                                            callback.onGetAreaCode(item);
-                                                        }
-                                                    });
-                                                }
-                                            }
-
-
-                                        } catch (Throwable e) {
-                                            e.printStackTrace();
-                                            if (callback != null) {
-                                                handler.post(new Runnable() {
-                                                    @Override
-                                                    public void run() {
-                                                        callback.onGetAreaCode(null);
-                                                    }
-                                                });
-                                            }
-                                        }
-                                    }
-                                });
+                            if (shouldCheckOnline && checkGTPVersion()) {
+                                checkNumberOnline(num, callback, false);
 
                             } else {
                                 if (callback != null) {
@@ -308,6 +246,84 @@ public class AreaCodeManager {
                 }
             }).start();
         }
+    }
+    public void checkNumberOnline(String num, GetAreaCodeCallback callback) {
+        checkNumberOnline(num, callback, true);
+    }
+
+
+    public void checkNumberOnline(final String number, GetAreaCodeCallback callback, boolean fallbackToLocalIfFail) {
+        GTAidlHandler.getInstance().checkNumber(number, new ICommonCallback.Stub() {
+            @Override
+            public void onComplete(boolean ret, int num, int num2, String s, String s1) throws RemoteException {
+
+                try {
+                    if (!ret || TextUtils.isEmpty(s)) {
+                        if(fallbackToLocalIfFail){
+                            getAreaCode(number, false, callback);
+                        }else{
+                            if (callback != null) {
+                                handler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        callback.onGetAreaCode(null);
+                                    }
+                                });
+                            }
+                        }
+                    } else {
+                        final AreaCodeItem item = new AreaCodeItem();
+                        JSONTokener jsonTokener = new JSONTokener(s);
+                        JSONObject jsonObject = (JSONObject) jsonTokener.nextValue();
+                        String area = "";
+                        if (jsonObject.has("province")) {
+                            area += jsonObject.getString("province");
+                            area += " ";
+                        }
+
+                        if (jsonObject.has("city")) {
+                            area += jsonObject.getString("city");
+                            item.setAreaCode(AreaCodeIndex.getAreaCode(jsonObject.getString("city")));
+                        }
+
+                        item.setMobileArea(area);
+
+                        if (jsonObject.has("provider")) {
+                            item.setProvider(jsonObject.getString("provider"));
+                        }
+
+                        if (jsonObject.has("report")) {
+                            item.setMark(jsonObject.getString("report"));
+                        }
+
+                        if (callback != null) {
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    callback.onGetAreaCode(item);
+                                }
+                            });
+                        }
+                    }
+
+
+                } catch (Throwable e) {
+                    e.printStackTrace();
+                    if(fallbackToLocalIfFail){
+                        getAreaCode(number, false, callback);
+                    }else {
+                        if (callback != null) {
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    callback.onGetAreaCode(null);
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+        });
     }
 
     public void getAreaCode(final String phoneNum, final GetAreaCodeCallback callback) {

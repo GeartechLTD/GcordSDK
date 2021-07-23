@@ -171,7 +171,7 @@ public class CellPhoneManager {
                     if(signalChangeListeners.size() > 0)
                     {
                         ArrayList<CellSignalItem> items = new ArrayList<>();
-                        Map<Integer,Map<String, Object>> data = intent.getParcelableExtra("data");
+                        Map<Integer,Map<String, Object>> data = (Map<Integer, Map<String, Object>>) intent.getSerializableExtra("data");
                         for (Integer subId:data.keySet()) {
                             Map<String, Object> signalMap = data.get(subId);
 
