@@ -31,6 +31,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.LinkedBlockingDeque;
 
+import cn.com.geartech.gcordsdk.areacode.AreaCodeIndex;
 import cn.com.geartech.gcordsdk.areacode.AreaCodeItem;
 import cn.com.geartech.gcordsdk.dataType.CallStatusItem;
 import cn.com.geartech.gcordsdk.dataType.UnifiedPhoneCall;
@@ -1430,13 +1431,21 @@ public class UnifiedPhoneController {
                 public void onGetAreaCode(AreaCodeItem areaCodeItem) {
                     String result = number;
 
-                    if (areaCodeItem != null
-                            && !currentAreaCode.equals(areaCodeItem.getAreaCode())) {
-                        if (number.length() == 11
+                    if (areaCodeItem != null){
+
+                        boolean shouldAdd = false;
+                        if(!TextUtils.isEmpty(areaCodeItem.getAreaCode()) && !currentAreaCode.equals(areaCodeItem.getAreaCode())) {
+                            shouldAdd = true;
+                        }else if(!TextUtils.isEmpty(areaCodeItem.getCity()) && ! AreaCodeIndex.getCity(currentAreaCode).contains(areaCodeItem.getCity())){
+                            shouldAdd = true;
+                        }
+
+                        if (shouldAdd && number.length() == 11
                                 && number.startsWith("1")) {
                             //异地手机号加0
                             result = "0".concat(number);
                         }
+
                     }
                     if (listener != null) {
                         String dialNumber = checkDialPrefix(result);
