@@ -53,6 +53,8 @@ public class UnifiedPhoneController {
     private static final String AUTO_RECORDING_BIT_RATE = "auto_recording_bit_rate";
     private final static String SYS_PREF_RING_TONE_STREAM_TYPE = "cn.com.geartech.riing_tone_stream_type";
     private static final String EVENT_DIAL_CELL_CALL = "cn.com.geartech.gtplatform.event_dial_cell_call";
+    private static final String PREF_USE_ONLINE_CHECKER = "use_online_checker";
+
     private static UnifiedPhoneController _instance = null;
     boolean autoDetectPreDial = false;
     boolean autoDetectPostDialFinish = false;
@@ -1422,26 +1424,50 @@ public class UnifiedPhoneController {
 
     private void checkSmartDialSettings(final String number, final String currentAreaCode, final OnSmartDialListener listener) {
 
-        GcordSDK.getInstance().getAreaCodeManager().getAreaCode(number, false,
-                new AreaCodeManager.GetAreaCodeCallback() {
-                    @Override
-                    public void onGetAreaCode(AreaCodeItem areaCodeItem) {
-                        String result = number;
+        if(isPreferUsingOnlineChecker()){
+            PhoneNumberUtil.checkNumberInfo(number, new AreaCodeManager.GetAreaCodeCallback() {
+                @Override
+                public void onGetAreaCode(AreaCodeItem areaCodeItem) {
+                    String result = number;
 
-                        if (areaCodeItem != null
-                                && !currentAreaCode.equals(areaCodeItem.getAreaCode())) {
-                            if (number.length() == 11
-                                    && number.startsWith("1")) {
-                                //异地手机号加0
-                                result = "0".concat(number);
-                            }
-                        }
-                        if (listener != null) {
-                            String dialNumber = checkDialPrefix(result);
-                            listener.dial(dialNumber);
+                    if (areaCodeItem != null
+                            && !currentAreaCode.equals(areaCodeItem.getAreaCode())) {
+                        if (number.length() == 11
+                                && number.startsWith("1")) {
+                            //异地手机号加0
+                            result = "0".concat(number);
                         }
                     }
-                });
+                    if (listener != null) {
+                        String dialNumber = checkDialPrefix(result);
+                        listener.dial(dialNumber);
+                    }
+                }
+            });
+
+        }else{
+            GcordSDK.getInstance().getAreaCodeManager().getAreaCode(number, false,
+                    new AreaCodeManager.GetAreaCodeCallback() {
+                        @Override
+                        public void onGetAreaCode(AreaCodeItem areaCodeItem) {
+                            String result = number;
+
+                            if (areaCodeItem != null
+                                    && !currentAreaCode.equals(areaCodeItem.getAreaCode())) {
+                                if (number.length() == 11
+                                        && number.startsWith("1")) {
+                                    //异地手机号加0
+                                    result = "0".concat(number);
+                                }
+                            }
+                            if (listener != null) {
+                                String dialNumber = checkDialPrefix(result);
+                                listener.dial(dialNumber);
+                            }
+                        }
+                    });
+
+        }
     }
 
     private void pickupAndDial(final String number) {
@@ -1966,4 +1992,44 @@ public class UnifiedPhoneController {
         return null;
     }
 
+    /**
+     * 设置是否优先使用在线的号码数据库
+     * 默认为false，即优先使用离线数据库
+     * @param use true = 优先使用在线； false = 优先使用离线
+     */
+    public void setPreferUsingOnlineChecker(boolean use){
+        try {
+            Context context = mContext;
+            if (context == null) context = GcordSDK.getInstance().getContext();
+            if (context == null) return;
+            SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_USE_ONLINE_CHECKER, Context.MODE_PRIVATE);
+            if (sharedPreferences != null) {
+                sharedPreferences.edit().putInt(PREF_USE_ONLINE_CHECKER, use ? 1 : 0).apply();
+            }
+        }catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    /**
+     * 获取是否优先使用在线的号码数据库
+     * 默认为false，即优先使用离线数据库
+     * @return true = 优先使用在线； false = 优先使用离线
+     */
+    public boolean isPreferUsingOnlineChecker(){
+        try {
+            Context context = mContext;
+            if (context == null) context = GcordSDK.getInstance().getContext();
+            if (context == null) return false;
+            SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_USE_ONLINE_CHECKER, Context.MODE_PRIVATE);
+            if (sharedPreferences != null) {
+                return sharedPreferences.getInt(PREF_USE_ONLINE_CHECKER, 0) == 1;
+            }
+        }catch (Throwable e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
 }
